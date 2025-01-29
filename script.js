@@ -1,9 +1,12 @@
-// Smooth Scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // JavaScript for Smooth Scrolling
+  document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
+
+        // Scroll to the corresponding section
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'start'
         });
     });
 });
@@ -36,5 +39,15 @@ form.addEventListener('submit', (e) => {
 });
 
 
+// js for nav bar
+// Get elements
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const navLinks = document.querySelector('.nav-links');
+
+// Toggle 'active' class to show/hide the nav links and change the hamburger to an X
+hamburgerIcon.addEventListener('click', () => {
+    hamburgerIcon.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
 
 
