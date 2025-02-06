@@ -1,5 +1,5 @@
-  // JavaScript for Smooth Scrolling
-  document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+// JavaScript for Smooth Scrolling
+document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -39,15 +39,30 @@ form.addEventListener('submit', (e) => {
 });
 
 
-// js for nav bar
-// Get elements
-const hamburgerIcon = document.getElementById('hamburger-icon');
-const navLinks = document.querySelector('.nav-links');
 
-// Toggle 'active' class to show/hide the nav links and change the hamburger to an X
-hamburgerIcon.addEventListener('click', () => {
-    hamburgerIcon.classList.toggle('active');
-    navLinks.classList.toggle('active');
+//nav bar
+// Get elements
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.querySelector(".nav-links");
+const closeBtn = document.getElementById("close-btn");
+
+// Toggle the sidebar on hamburger click
+hamburger.addEventListener("click", () => {
+    navLinks.classList.add("active");
 });
+
+// Close the sidebar when the red "X" button is clicked
+closeBtn.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+});
+
+// Optional: If you want to click outside the navbar to close it
+document.addEventListener("click", (event) => {
+    if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+        navLinks.classList.remove("active");
+    }
+});
+
+
 
 
