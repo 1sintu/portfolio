@@ -56,65 +56,81 @@ body {
     border-radius: 5px;
 }
 
-/* Hamburger Icon for Mobile */
-.hamburger {
-    display: none;
-    cursor: pointer;
+
+/* Sidebar menu styles */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    position: fixed;
+    top: 80px; /* Start right below the navbar */
+    left: -250px; /* Initially hidden off-screen */
+    height: 100%; /* Full screen height */
+    width: 250px;
+    background: rgba(0, 0, 0, 0.9);
     flex-direction: column;
-    gap: 5px;
-    transition: transform 0.3s ease;
-}
-
-.bar {
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active {
+    left: 0; /* Move the sidebar into view when active */
+  }
+  
+  .nav-links li {
+    margin: 20px 0;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #f4f4f4;
+  }
+  
+  /* Close button in red */
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Hamburger menu styles */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .hamburger .bar {
     width: 30px;
-    height: 3px;
-    background-color: #fff;
+    height: 4px;
+    margin: 6px 0;
+    background-color: white;
     border-radius: 5px;
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    /* Hide the navigation links on mobile by default */
-    .nav-links {
-        display: none;
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        top: 60px; /* Below the navbar */
-        left: 0;
-        background-color: #333;
-        padding: 20px 0;
-    }
-
-    .nav-links li {
-        margin: 15px 0;
-    }
-
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
     .hamburger {
-        display: flex; /* Show hamburger on mobile */
+      display: flex;
     }
-
-    /* When hamburger icon is active, display the nav-links */
-    .nav-links.active {
-        display: flex;
+    .close-btn {
+      display: none; /* Initially hide the close button */
     }
-
-    /* Hamburger to cross (X) icon */
-    .hamburger.active .bar:nth-child(1) {
-        transform: rotate(45deg);
-        position: absolute;
+  
+    .nav-links.active .close-btn {
+      display: block; /* Show close button when sidebar is active */
     }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: rotate(-45deg);
-        position: absolute;
-    }
-}
-
+  }
+  
+  
 /* Hero Section */
 .hero {
     height: 100vh;
