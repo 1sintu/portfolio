@@ -249,12 +249,23 @@ body {
 
 
 
-
 /* skill section */
+/* .skills {
+    background-color: #333;
+    padding: 50px 20px;
+    width: 80%;
+} */
+
 .skills {
     background-color: #333;
     padding: 50px 20px;
+    width: 90%;
+    margin: 0 auto; /* This will center the card horizontally */
+    border-radius: 5px;
 }
+
+
+
 
 .skills h2 {
     font-size: 2rem;
@@ -274,6 +285,26 @@ body {
     margin: 10px;
     text-align: center;
     color: #fff;
+}
+
+/* Create a wrapper class for a gap around a single card */
+.skill-gap {
+    position: relative;
+    width: 20%;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.skill-gap::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background color for the gap */
+    z-index: -1; /* Ensures the gap stays behind the card */
 }
 
 .skill i {
@@ -314,6 +345,7 @@ body {
     width: 70%;
     background-color: #4f5b93;
 }
+
 
 
 /* Projects Section */
