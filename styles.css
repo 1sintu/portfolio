@@ -240,6 +240,15 @@ body {
 
 
 
+/* Style for the service icons */
+.service-icon {
+    font-size: 40px;
+    color: #dab200;
+    margin-bottom: 15px;
+}
+
+
+
 
 /* skill section */
 .skills {
