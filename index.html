@@ -31,190 +31,286 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-primary-dark text-soft-gray font-sans antialiased overflow-x-hidden">
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full bg-glass-bg backdrop-blur-lg border-b border-primary-blue/20 shadow-md z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <h1 class="text-2xl font-extrabold tracking-tight">
-                    <a href="#home" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Sintu Kr.</a>
-                </h1>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#home" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Home</a>
-                    <a href="#about" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">About</a>
-                    <a href="#services" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Services</a>
-                    <a href="#skills" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Skills</a>
-                    <a href="#projects" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Projects</a>
-                    <a href="#contact" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Contact</a>
+    <!-- Main Container -->
+    <div id="main-content">
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 w-full bg-glass-bg backdrop-blur-lg border-b border-primary-blue/20 shadow-md z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <h1 class="text-2xl font-extrabold tracking-tight">
+                        <a href="#home" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300 smooth-scroll">Sintu Kr.</a>
+                    </h1>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="#home" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Home</a>
+                        <a href="#about" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">About</a>
+                        <a href="#services" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Services</a>
+                        <a href="#skills" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Skills</a>
+                        <a href="#projects" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Projects</a>
+                        <a href="#contact" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Contact</a>
+                    </div>
+                    <button id="hamburger" class="md:hidden text-soft-gray hover:text-secondary-teal focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                 </div>
-                <button id="hamburger" class="md:hidden text-soft-gray hover:text-secondary-teal focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </nav>
+
+        <!-- Sidebar for Small Devices -->
+        <div id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-glass-bg backdrop-blur-lg border-r border-primary-blue/20 transform -translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
+            <div class="flex justify-between items-center p-6 border-b border-primary-blue/20">
+                <h2 class="text-xl font-bold text-secondary-teal">Menu</h2>
+                <button id="close-sidebar" class="text-soft-gray hover:text-secondary-teal focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
+            <ul class="p-6 space-y-6">
+                <li><a href="#home" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Home</a></li>
+                <li><a href="#about" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">About</a></li>
+                <li><a href="#services" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Services</a></li>
+                <li><a href="#skills" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Skills</a></li>
+                <li><a href="#projects" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Projects</a></li>
+                <li><a href="#contact" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Contact</a></li>
+            </ul>
         </div>
-    </nav>
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"></div>
 
-    <!-- Sidebar for Small Devices -->
-    <div id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-glass-bg backdrop-blur-lg border-r border-primary-blue/20 transform -translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
-        <div class="flex justify-between items-center p-6 border-b border-primary-blue/20">
-            <h2 class="text-xl font-bold text-secondary-teal">Menu</h2>
-            <button id="close-sidebar" class="text-soft-gray hover:text-secondary-teal focus:outline-none">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-        <ul class="p-6 space-y-6">
-            <li><a href="#home" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Home</a></li>
-            <li><a href="#about" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">About</a></li>
-            <li><a href="#services" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Services</a></li>
-            <li><a href="#skills" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Skills</a></li>
-            <li><a href="#projects" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Projects</a></li>
-            <li><a href="#contact" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Contact</a></li>
-        </ul>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-dark to-primary-blue pt-20">
+            <div class="text-center px-6 max-w-4xl mx-auto animate-fade-in">
+                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-secondary-teal to-soft-gray">
+                    Hello, I'm Sintu
+                </h2>
+                <p class="text-xl md:text-2xl text-muted-gray mb-8 leading-relaxed font-light">Full Stack Developer | Web Innovator | Python Enthusiast | IoT Pioneer</p>
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Get in Touch</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-28 bg-primary-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">About Me</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="flex justify-center order-1 md:order-2">
+                        <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sintu Kr. Profile" class="w-72 h-72 object-cover rounded-full shadow-neumorphic hover:scale-105 transition-all duration-300">
+                    </div>
+                    <div class="bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md order-2 md:order-1 md:max-w-md md:-mr-8">
+                        <p class="text-lg md:text-xl text-muted-gray leading-loose">I'm a passionate creator building cutting-edge digital experiences. Specializing in full-stack development, I craft seamless solutions with a blend of creativity and technical precision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <i class="fas fa-laptop-code text-5xl text-secondary-teal mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Web Development</h3>
+                        <p class="text-muted-gray mb-4">Modern, responsive websites tailored to your vision.</p>
+                        <button data-target="service1-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</button>
+                    </div>
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <i class="fas fa-cloud text-5xl text-secondary-teal mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">IoT Development</h3>
+                        <p class="text-muted-gray mb-4">Smart, connected solutions for the future.</p>
+                        <button data-target="service2-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</button>
+                    </div>
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <i class="fas fa-cogs text-5xl text-secondary-teal mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Automation</h3>
+                        <p class="text-muted-gray mb-4">Efficient systems to streamline your workflows.</p>
+                        <button data-target="service3-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-28 bg-primary-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                        <i class="fab fa-html5 text-5xl text-secondary-teal mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-soft-gray">HTML</h3>
+                        <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 90%"></div></div>
+                    </div>
+                    <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                        <i class="fab fa-css3-alt text-5xl text-secondary-teal mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-soft-gray">CSS</h3>
+                        <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 85%"></div></div>
+                    </div>
+                    <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                        <i class="fab fa-js-square text-5xl text-secondary-teal mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-soft-gray">JavaScript</h3>
+                        <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 80%"></div></div>
+                    </div>
+                    <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                        <i class="fab fa-python text-5xl text-secondary-teal mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-soft-gray">Python</h3>
+                        <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 75%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project One</h3>
+                        <p class="text-muted-gray mb-4">Description of Project One</p>
+                        <button data-target="project1-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</button>
+                    </div>
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Two</h3>
+                        <p class="text-muted-gray mb-4">Description of Project Two</p>
+                        <button data-target="project2-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</button>
+                    </div>
+                    <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                        <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Three</h3>
+                        <p class="text-muted-gray mb-4">Description of Project Three</p>
+                        <button data-target="project3-detail" class="learn-more text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-28 bg-primary-dark">
+            <div class="max-w-lg mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">Contact Me</h2>
+                <form id="contact-form" action="submit_contact.php" method="POST" class="space-y-6 bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
+                    <textarea name="message" placeholder="Your Message" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300"></textarea>
+                    <button type="submit" class="w-full bg-secondary-teal text-primary-dark px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gradient-to-t from-primary-dark to-primary-blue py-12">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-semibold text-secondary-teal mb-4">Contact Me</h3>
+                    <p>Email: <a href="mailto:sintumidyya345@gmail.com" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">sintumidyya345@gmail.com</a></p>
+                    <p class="text-muted-gray">Phone: +123 456 7890</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-xl font-semibold text-secondary-teal mb-4">Follow Me</h3>
+                    <div class="flex space-x-6">
+                        <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="https://twitter.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                        <a href="https://github.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center md:justify-end">
+                    <p class="text-muted-gray">© 2025 Sintu Kr. Middya. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-dark to-primary-blue pt-20">
-        <div class="text-center px-6 max-w-4xl mx-auto animate-fade-in">
-            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-secondary-teal to-soft-gray">
-                Hello, I'm Sintu
-            </h2>
-            <p class="text-xl md:text-2xl text-muted-gray mb-8 leading-relaxed font-light">Full Stack Developer | Web Innovator | Python Enthusiast | IoT Pioneer</p>
-            <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Get in Touch</a>
-        </div>
-    </section>
+    <!-- Detailed Sections (Hidden by Default) -->
+    <div id="detail-content" class="hidden fixed inset-0 bg-primary-dark z-50 overflow-y-auto">
+        <!-- Back Button -->
+        <button id="back-btn" class="fixed top-4 left-4 text-secondary-teal hover:text-soft-gray transition-colors duration-300">
+            <i class="fas fa-arrow-left text-2xl"></i> Back
+        </button>
 
-    <!-- About Section (Text Shifted Right on Larger Screens, Image Above Text on Small Screens) -->
-    <section id="about" class="py-28 bg-primary-dark">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">About Me</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Image (Order 1 on small screens, 2 on medium+) -->
-                <div class="flex justify-center order-1 md:order-2">
-                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sintu Kr. Profile" class="w-72 h-72 object-cover rounded-full shadow-neumorphic hover:scale-105 transition-all duration-300">
-                </div>
-                <!-- Text (Order 2 on small screens, 1 on medium+, shifted right) -->
-                <div class="bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md order-2 md:order-1 md:ml-auto md:max-w-md">
-                    <p class="text-lg md:text-xl text-muted-gray leading-loose">I'm a passionate creator building cutting-edge digital experiences. Specializing in full-stack development, I craft seamless solutions with a blend of creativity and technical precision.</p>
-                </div>
+        <!-- Service 1 Detail -->
+        <section id="service1-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">Web Development</h2>
+            <p class="text-lg text-muted-gray mb-6">I offer comprehensive web development services, creating responsive, user-friendly websites using modern technologies like HTML, CSS, JavaScript, and frameworks such as React and Node.js. Whether you need a simple landing page or a complex web application, I ensure high performance and scalability.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Custom website design</li>
+                <li>Frontend and backend development</li>
+                <li>SEO optimization</li>
+                <li>Maintenance and updates</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me for This Service</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <i class="fas fa-laptop-code text-5xl text-secondary-teal mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Web Development</h3>
-                    <p class="text-muted-gray mb-4">Modern, responsive websites tailored to your vision.</p>
-                    <a href="service1.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
-                </div>
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <i class="fas fa-cloud text-5xl text-secondary-teal mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">IoT Development</h3>
-                    <p class="text-muted-gray mb-4">Smart, connected solutions for the future.</p>
-                    <a href="service2.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
-                </div>
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <i class="fas fa-cogs text-5xl text-secondary-teal mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Automation</h3>
-                    <p class="text-muted-gray mb-4">Efficient systems to streamline your workflows.</p>
-                    <a href="service3.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
-                </div>
+        <!-- Service 2 Detail -->
+        <section id="service2-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">IoT Development</h2>
+            <p class="text-lg text-muted-gray mb-6">My IoT development services focus on connecting devices to create smart, efficient systems. From home automation to industrial IoT solutions, I leverage Python, MQTT, and hardware integration to build secure and innovative projects.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Device connectivity and control</li>
+                <li>Data collection and analysis</li>
+                <li>Custom IoT dashboards</li>
+                <li>Security implementation</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me for This Service</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-28 bg-primary-dark">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
-                    <i class="fab fa-html5 text-5xl text-secondary-teal mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">HTML</h3>
-                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 90%"></div></div>
-                </div>
-                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
-                    <i class="fab fa-css3-alt text-5xl text-secondary-teal mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">CSS</h3>
-                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 85%"></div></div>
-                </div>
-                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
-                    <i class="fab fa-js-square text-5xl text-secondary-teal mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">JavaScript</h3>
-                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 80%"></div></div>
-                </div>
-                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
-                    <i class="fab fa-python text-5xl text-secondary-teal mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">Python</h3>
-                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 75%"></div></div>
-                </div>
+        <!-- Service 3 Detail -->
+        <section id="service3-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">Automation</h2>
+            <p class="text-lg text-muted-gray mb-6">I design automation systems to streamline workflows, reduce manual effort, and boost productivity. Using tools like Python, Selenium, and custom scripts, I create tailored solutions for businesses and individuals.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Workflow automation</li>
+                <li>Script development</li>
+                <li>Integration with existing systems</li>
+                <li>Performance monitoring</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me for This Service</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project One</h3>
-                    <p class="text-muted-gray mb-4">Description of Project One</p>
-                    <a href="project1.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
-                </div>
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Two</h3>
-                    <p class="text-muted-gray mb-4">Description of Project Two</p>
-                    <a href="project2.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
-                </div>
-                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
-                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Three</h3>
-                    <p class="text-muted-gray mb-4">Description of Project Three</p>
-                    <a href="project3.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
-                </div>
+        <!-- Project 1 Detail -->
+        <section id="project1-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">Project One</h2>
+            <p class="text-lg text-muted-gray mb-6">Project One is a dynamic e-commerce platform built with React and Node.js. It features a responsive design, secure payment integration, and an admin dashboard for managing products and orders.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Technologies: React, Node.js, MongoDB</li>
+                <li>Features: Product catalog, cart, payment gateway</li>
+                <li>Duration: 3 months</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me About This Project</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-28 bg-primary-dark">
-        <div class="max-w-lg mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">Contact Me</h2>
-            <form id="contact-form" action="submit_contact.php" method="POST" class="space-y-6 bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md">
-                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
-                <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
-                <textarea name="message" placeholder="Your Message" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300"></textarea>
-                <button type="submit" class="w-full bg-secondary-teal text-primary-dark px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <!-- Project 2 Detail -->
+        <section id="project2-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">Project Two</h2>
+            <p class="text-lg text-muted-gray mb-6">Project Two is a smart home IoT system that integrates lighting, temperature, and security controls via a mobile app, built with Python and Raspberry Pi.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Technologies: Python, MQTT, Raspberry Pi</li>
+                <li>Features: Remote control, real-time monitoring</li>
+                <li>Duration: 2 months</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me About This Project</a>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-t from-primary-dark to-primary-blue py-12">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-                <h3 class="text-xl font-semibold text-secondary-teal mb-4">Contact Me</h3>
-                <p>Email: <a href="mailto:sintumidyya345@gmail.com" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">sintumidyya345@gmail.com</a></p>
-                <p class="text-muted-gray">Phone: +123 456 7890</p>
+        <!-- Project 3 Detail -->
+        <section id="project3-detail" class="detail-section hidden py-20 px-6 max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-8 text-center">Project Three</h2>
+            <p class="text-lg text-muted-gray mb-6">Project Three is an automation script suite for data processing, built with Python and Pandas, designed to handle large datasets and generate reports efficiently.</p>
+            <ul class="list-disc list-inside text-muted-gray mb-6">
+                <li>Technologies: Python, Pandas, Excel</li>
+                <li>Features: Data cleaning, reporting, scheduling</li>
+                <li>Duration: 1 month</li>
+            </ul>
+            <div class="text-center">
+                <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Contact Me About This Project</a>
             </div>
-            <div class="flex flex-col items-center">
-                <h3 class="text-xl font-semibold text-secondary-teal mb-4">Follow Me</h3>
-                <div class="flex space-x-6">
-                    <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-facebook-f text-2xl"></i></a>
-                    <a href="https://twitter.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-twitter text-2xl"></i></a>
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-linkedin-in text-2xl"></i></a>
-                    <a href="https://github.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-github text-2xl"></i></a>
-                </div>
-            </div>
-            <div class="flex items-center justify-center md:justify-end">
-                <p class="text-muted-gray">© 2025 Sintu Kr. Middya. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </section>
+    </div>
 
     <script>
         // Sidebar toggle functionality
@@ -242,6 +338,37 @@
                 });
                 toggleSidebar();
             });
+        });
+
+        // Learn More toggle functionality
+        const mainContent = document.getElementById('main-content');
+        const detailContent = document.getElementById('detail-content');
+        const learnMoreButtons = document.querySelectorAll('.learn-more');
+        const backBtn = document.getElementById('back-btn');
+        const detailSections = document.querySelectorAll('.detail-section');
+
+        learnMoreButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+
+                // Hide main content and show detail content
+                mainContent.classList.add('hidden');
+                detailContent.classList.remove('hidden');
+
+                // Hide all detail sections and show the target one
+                detailSections.forEach(section => section.classList.add('hidden'));
+                targetSection.classList.remove('hidden');
+
+                // Scroll to top of detail content
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        backBtn.addEventListener('click', () => {
+            detailContent.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            toggleSidebar(); // Close sidebar if open
         });
     </script>
 </body>
