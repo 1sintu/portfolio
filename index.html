@@ -1,238 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Sintu Kr. :)</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind CSS CDN with custom config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0f172a',    // Deep slate blue
+                        'primary-blue': '#1e3a8a',    // Rich blue
+                        'secondary-teal': '#2dd4bf',  // Vibrant teal
+                        'soft-gray': '#e2e8f0',       // Light gray
+                        'muted-gray': '#64748b',      // Muted gray
+                        'glass-bg': 'rgba(255, 255, 255, 0.05)' // For glassmorphism
+                    },
+                    boxShadow: {
+                        'neumorphic': '8px 8px 16px #0a1020, -8px -8px 16px #141e3c',
+                        'neumorphic-inset': 'inset 4px 4px 8px #0a1020, inset -4px -4px 8px #141e3c'
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Font Awesome CDN -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
-<body>
-
+<body class="bg-primary-dark text-soft-gray font-sans antialiased overflow-x-hidden">
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <h1><a href="#home" class="smooth-scroll">Sintu Kr. :)</a></h1>
-            <!-- Home link now included in smooth scroll -->
-            <!-- Hamburger Icon for Mobile -->
-            <div class="hamburger" id="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+    <nav class="fixed top-0 w-full bg-glass-bg backdrop-blur-lg border-b border-primary-blue/20 shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <h1 class="text-2xl font-extrabold tracking-tight">
+                    <a href="#home" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Sintu Kr.</a>
+                </h1>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Home</a>
+                    <a href="#about" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">About</a>
+                    <a href="#services" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Services</a>
+                    <a href="#skills" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Skills</a>
+                    <a href="#projects" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Projects</a>
+                    <a href="#contact" class="smooth-scroll px-4 py-2 text-sm font-medium hover:text-secondary-teal hover:bg-glass-bg rounded-full transition-all duration-300">Contact</a>
+                </div>
+                <button id="hamburger" class="md:hidden text-soft-gray hover:text-secondary-teal focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <!-- Navigation Links -->
-            <ul class="nav-links">
-                <li><a href="#home" class="smooth-scroll">Home</a></li>
-                <li><a href="#about" class="smooth-scroll">About</a></li>
-                <li><a href="#services" class="smooth-scroll">Services</a></li>
-                <li><a href="#skills" class="smooth-scroll">Skills</a></li>
-                <li><a href="#projects" class="smooth-scroll">Projects</a></li>
-                <li><a href="#contact" class="smooth-scroll">Contact</a></li>
-                <li class="close-btn" id="close-btn">&#10006;</li> <!-- Close button (red X) -->
-            </ul>
         </div>
     </nav>
 
+    <!-- Sidebar for Small Devices -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-72 bg-glass-bg backdrop-blur-lg border-r border-primary-blue/20 transform -translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
+        <div class="flex justify-between items-center p-6 border-b border-primary-blue/20">
+            <h2 class="text-xl font-bold text-secondary-teal">Menu</h2>
+            <button id="close-sidebar" class="text-soft-gray hover:text-secondary-teal focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <ul class="p-6 space-y-6">
+            <li><a href="#home" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Home</a></li>
+            <li><a href="#about" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">About</a></li>
+            <li><a href="#services" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Services</a></li>
+            <li><a href="#skills" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Skills</a></li>
+            <li><a href="#projects" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Projects</a></li>
+            <li><a href="#contact" class="smooth-scroll block px-4 py-2 text-lg font-medium hover:text-secondary-teal hover:bg-primary-dark/50 rounded-lg transition-all duration-300">Contact</a></li>
+        </ul>
+    </div>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"></div>
+
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h2>
-                <span style="--delay: 0s">H</span>
-                <span style="--delay: 0.1s">e</span>
-                <span style="--delay: 0.2s">l</span>
-                <span style="--delay: 0.3s">l</span>
-                <span style="--delay: 0.4s">o</span>
-                <span style="--delay: 0.5s">,</span>
-                <span style="--delay: 0.6s"> </span>
-                <span style="--delay: 0.7s">I</span>
-                <span style="--delay: 0.8s">'</span>
-                <span style="--delay: 0.9s">m</span>
-                <span style="--delay: 1s"> </span>
-                <span style="--delay: 1.1s">[</span>
-                <span style="--delay: 1.2s">S</span>
-                <span style="--delay: 1.3s">i</span>
-                <span style="--delay: 1.4s">n</span>
-                <span style="--delay: 1.5s">t</span>
-                <span style="--delay: 1.6s">u</span>
-                <span style="--delay: 1.7s">.</span>
-                <span style="--delay: 1.8s">.</span>
-                <span style="--delay: 1.9s">.</span>
-                <span style="--delay: 2s">.</span>
-                <span style="--delay: 2.1s">]</span>
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-dark to-primary-blue pt-20">
+        <div class="text-center px-6 max-w-4xl mx-auto animate-fade-in">
+            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-secondary-teal to-soft-gray">
+                Hello, I'm Sintu
             </h2>
-            <p>Full Stack Developer | Web Developer | Python Enthusiast | IoT</p>
-            <a href="#contact" class="cta-btn">Get in Touch</a>
+            <p class="text-xl md:text-2xl text-muted-gray mb-8 leading-relaxed font-light">Full Stack Developer | Web Innovator | Python Enthusiast | IoT Pioneer</p>
+            <a href="#contact" class="inline-block bg-secondary-teal text-primary-dark px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Get in Touch</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 class="section-heading">About Me</h2>
-        <p>I'm a passionate web developer with a knack for building creative and interactive websites. I specialize in
-            both frontend and backend development.</p>
+    <!-- About Section (Text Shifted Right on Larger Screens, Image Above Text on Small Screens) -->
+    <section id="about" class="py-28 bg-primary-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Image (Order 1 on small screens, 2 on medium+) -->
+                <div class="flex justify-center order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sintu Kr. Profile" class="w-72 h-72 object-cover rounded-full shadow-neumorphic hover:scale-105 transition-all duration-300">
+                </div>
+                <!-- Text (Order 2 on small screens, 1 on medium+, shifted right) -->
+                <div class="bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md order-2 md:order-1 md:ml-auto md:max-w-md">
+                    <p class="text-lg md:text-xl text-muted-gray leading-loose">I'm a passionate creator building cutting-edge digital experiences. Specializing in full-stack development, I craft seamless solutions with a blend of creativity and technical precision.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="projects">
-        <h2 class="section-heading">My Services</h2>
-        <div class="project-list">
-            <!-- Web Development Service -->
-            <div class="project">
-                <i class="fas fa-laptop-code service-icon"></i>
-                <h3>Web Development</h3>
-                <p>Building responsive and modern websites tailored to your needs.</p>
-                <a href="service1.html">Learn More</a>
-            </div>
-
-            <!-- IoT Service -->
-            <div class="project">
-                <i class="fas fa-cloud service-icon"></i>
-                <h3>IoT Development</h3>
-                <p>Designing and developing smart IoT solutions to connect devices and automate processes.</p>
-                <a href="service2.html">Learn More</a>
-            </div>
-
-            <!-- Automation Service -->
-            <div class="project">
-                <i class="fas fa-cogs service-icon"></i>
-                <h3>Automation</h3>
-                <p>Implementing automation systems to streamline workflows and reduce manual efforts.</p>
-                <a href="service3.html">Learn More</a>
+    <section id="services" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <i class="fas fa-laptop-code text-5xl text-secondary-teal mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Web Development</h3>
+                    <p class="text-muted-gray mb-4">Modern, responsive websites tailored to your vision.</p>
+                    <a href="service1.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
+                </div>
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <i class="fas fa-cloud text-5xl text-secondary-teal mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">IoT Development</h3>
+                    <p class="text-muted-gray mb-4">Smart, connected solutions for the future.</p>
+                    <a href="service2.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
+                </div>
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <i class="fas fa-cogs text-5xl text-secondary-teal mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Automation</h3>
+                    <p class="text-muted-gray mb-4">Efficient systems to streamline your workflows.</p>
+                    <a href="service3.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">Learn More</a>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <!-- skill section  -->
-    <section id="skills" class="skills">
-        <h2 class="section-heading">My Skills</h2>
-        <div class="skills-list">
-            <div class="skill">
-                <i class="fab fa-html5"></i>
-                <h3>HTML</h3>
-                <div class="progress-bar html"></div>
-            </div>
-            <div class="skill">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS</h3>
-                <div class="progress-bar css"></div>
-            </div>
-            <div class="skill">
-                <i class="fab fa-js-square"></i>
-                <h3>JavaScript</h3>
-                <div class="progress-bar js"></div>
-            </div>
-            <div class="skill">
-                <i class="fab fa-python"></i>
-                <h3>Python</h3>
-                <div class="progress-bar python"></div>
-            </div>
-            <div class="skill">
-                <i class="fab fa-php"></i>
-                <h3>PHP</h3>
-                <div class="progress-bar php"></div>
-            </div>
-            <!-- Adding SQL and IoT Skills -->
-            <div class="skill">
-                <i class="fas fa-database"></i> <!-- SQL Icon -->
-                <h3>SQL</h3>
-                <div class="progress-bar sql"></div>
-            </div>
-            <div class="skill">
-                <i class="fas fa-plug"></i> <!-- IoT Icon -->
-                <h3>IoT</h3>
-                <div class="progress-bar iot"></div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-28 bg-primary-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                    <i class="fab fa-html5 text-5xl text-secondary-teal mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">HTML</h3>
+                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 90%"></div></div>
+                </div>
+                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                    <i class="fab fa-css3-alt text-5xl text-secondary-teal mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">CSS</h3>
+                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 85%"></div></div>
+                </div>
+                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                    <i class="fab fa-js-square text-5xl text-secondary-teal mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">JavaScript</h3>
+                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 80%"></div></div>
+                </div>
+                <div class="text-center p-6 bg-glass-bg rounded-2xl shadow-neumorphic-inset">
+                    <i class="fab fa-python text-5xl text-secondary-teal mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-gray">Python</h3>
+                    <div class="w-full bg-primary-blue/30 rounded-full h-3"><div class="bg-gradient-to-r from-secondary-teal to-primary-blue h-3 rounded-full transition-all duration-700" style="width: 75%"></div></div>
+                </div>
             </div>
         </div>
     </section>
-
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2 class="section-heading">My Projects</h2>
-        <div class="project-list">
-            <div class="project">
-                <h3>Project One</h3>
-                <p>Description of Project One</p>
-                <a href="project1.html">View Project</a>
-            </div>
-            <div class="project">
-                <h3>Project Two</h3>
-                <p>Description of Project Two</p>
-                <a href="project2.html">View Project</a>
-            </div>
-            <div class="project">
-                <h3>Project Three</h3>
-                <p>Description of Project Three</p>
-                <a href="project3.html">View Project</a>
-            </div>
-
-            <div class="project">
-                <h3>Project Four</h3>
-                <p>Description of Project Four</p>
-                <a href="project4.html">View Project</a>
-            </div>
-            <div class="project">
-                <h3>Project Five</h3>
-                <p>Description of Project Five</p>
-                <a href="project5.html">View Project</a>
-            </div>
-            <div class="project">
-                <h3>Project Six</h3>
-                <p>Description of Project Six</p>
-                <a href="project6.html">View Project</a>
+    <section id="projects" class="py-28 bg-gradient-to-br from-primary-dark to-primary-blue">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project One</h3>
+                    <p class="text-muted-gray mb-4">Description of Project One</p>
+                    <a href="project1.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
+                </div>
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Two</h3>
+                    <p class="text-muted-gray mb-4">Description of Project Two</p>
+                    <a href="project2.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
+                </div>
+                <div class="bg-glass-bg p-6 rounded-2xl hover:scale-105 transition-all duration-300 shadow-neumorphic border border-primary-blue/20 backdrop-blur-md">
+                    <h3 class="text-2xl font-semibold mb-3 text-soft-gray">Project Three</h3>
+                    <p class="text-muted-gray mb-4">Description of Project Three</p>
+                    <a href="project3.html" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">View Project</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-heading">Contact Me</h2>
-        <form id="contact-form" action="submit_contact.php" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <section id="contact" class="py-28 bg-primary-dark">
+        <div class="max-w-lg mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-secondary-teal mb-12 text-center relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-12px] after:w-24 after:h-1 after:bg-gradient-to-r from-secondary-teal to-primary-blue after:rounded-full animate-fade-in">Contact Me</h2>
+            <form id="contact-form" action="submit_contact.php" method="POST" class="space-y-6 bg-glass-bg p-8 rounded-2xl shadow-neumorphic-inset backdrop-blur-md">
+                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
+                <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300">
+                <textarea name="message" placeholder="Your Message" required class="w-full px-4 py-3 bg-primary-blue/30 text-soft-gray rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-secondary-teal placeholder-muted-gray transition-all duration-300"></textarea>
+                <button type="submit" class="w-full bg-secondary-teal text-primary-dark px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-neumorphic">Send Message</button>
+            </form>
+        </div>
     </section>
 
-    <footer id="footer" class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Contact Me</h3>
-                <p>Email: <a href="mailto:your.email@example.com">sintumidyya345@gmail.com</a></p>
-                <p>Phone: +91 9749840269</p>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-t from-primary-dark to-primary-blue py-12">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-semibold text-secondary-teal mb-4">Contact Me</h3>
+                <p>Email: <a href="mailto:sintumidyya345@gmail.com" class="text-secondary-teal hover:text-soft-gray transition-colors duration-300">sintumidyya345@gmail.com</a></p>
+                <p class="text-muted-gray">Phone: +123 456 7890</p>
             </div>
-            <div class="footer-center">
-                <h3>Follow Me</h3>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/yourprofile" target="_blank" class="social-icon facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://twitter.com/yourprofile" target="_blank" class="social-icon twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-icon linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/yourprofile" target="_blank" class="social-icon github">
-                        <i class="fab fa-github"></i>
-                    </a>
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-semibold text-secondary-teal mb-4">Follow Me</h3>
+                <div class="flex space-x-6">
+                    <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-facebook-f text-2xl"></i></a>
+                    <a href="https://twitter.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-twitter text-2xl"></i></a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                    <a href="https://github.com/yourprofile" target="_blank" class="text-soft-gray hover:text-secondary-teal hover:scale-110 transition-all duration-300"><i class="fab fa-github text-2xl"></i></a>
                 </div>
             </div>
-            <div class="footer-right">
-                <p>&copy; 2025 Sintu kr. middya. All rights reserved.</p>
+            <div class="flex items-center justify-center md:justify-end">
+                <p class="text-muted-gray">© 2025 Sintu Kr. Middya. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Sidebar toggle functionality
+        const hamburger = document.getElementById('hamburger');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
 
-    <script src="script.js"></script>
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+
+        hamburger.addEventListener('click', toggleSidebar);
+        closeSidebar.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Smooth scrolling
+        document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                toggleSidebar();
+            });
+        });
+    </script>
 </body>
-
 </html>
